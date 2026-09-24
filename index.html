@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>توب آرت للديكور والإعلان</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap">
+<style>
+/* ===== الألوان والمتغيرات ===== */
+:root{--bg:#0D0F12;--bg2:#15181E;--line:#242933;--a1:#F5911E;--a2:#E67300;--tx:#fff;--mut:#9AA4B2;
+--grad:linear-gradient(135deg,var(--a1),var(--a2));
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.8 Tajawal,Tahoma,sans-serif}
+h1,h2,h3{font-family:Cairo,Tajawal,sans-serif;line-height:1.3}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--a1);outline-offset:3px}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+section{padding:72px 0}
+h2{font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:10px}
+.sub{color:var(--mut);max-width:560px;margin-bottom:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:700 16px Tajawal,sans-serif;padding:13px 26px;border-radius:10px;transition:transform .2s,box-shadow .2s;color:#111;background:var(--grad)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px -6px rgba(245,145,30,.55)}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--a1);box-shadow:none}
+/* ===== الشريط العلوي ===== */
+header{position:sticky;top:0;z-index:20;background:rgba(13,15,18,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:800 18px Cairo,sans-serif}
+.brand img{height:34px}
+nav a{margin-inline-start:22px;color:var(--mut);font-weight:500;transition:color .2s}
+nav a:hover{color:var(--a1)}
+@media(max-width:720px){nav{display:none}}
+/* ===== الواجهة الرئيسية: خطوط مائلة مستوحاة من الشعار ===== */
+.hero{position:relative;overflow:hidden;padding:110px 0 96px}
+.hero::before,.hero::after{content:"";position:absolute;top:-10%;height:130%;transform:skewX(-24deg);background:var(--grad)}
+.hero::before{left:6%;width:70px;opacity:.9}
+.hero::after{left:calc(6% + 100px);width:26px;opacity:.55}
+.glow{position:absolute;inset-inline-start:-120px;top:-100px;width:520px;height:520px;background:radial-gradient(circle,rgba(245,145,30,.2),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(40px,8vw,84px);font-weight:900;margin-bottom:14px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--mut);font-size:18px;max-width:520px;margin-bottom:30px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.hero-in{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@media(prefers-reduced-motion:reduce){.hero-in{animation:none}html{scroll-behavior:auto}}
+/* ===== الخدمات ===== */
+.services{background:var(--bg2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:26px;transition:border-color .25s}
+.card:hover{border-color:var(--a1)}
+.card svg{width:44px;height:44px;stroke:var(--a1);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--mut);font-size:15px;margin-bottom:12px}
+.card ul{list-style:none;padding:0;font-size:14px;color:#cfd5de}
+.card li{padding-inline-start:16px;position:relative}
+.card li::before{content:"";position:absolute;inset-inline-start:0;top:12px;width:7px;height:2px;background:var(--a1)}
+/* ===== النماذج ===== */
+.tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tab{cursor:pointer;background:var(--bg2);border:1px solid var(--line);color:var(--mut);font:700 16px Tajawal,sans-serif;padding:11px 22px;border-radius:10px}
+.tab[aria-selected=true]{background:var(--grad);color:#111;border-color:transparent}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:28px}
+.panel[hidden]{display:none}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+input,select,textarea{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:9px;padding:12px 14px;font:400 16px Tajawal,sans-serif}
+input:focus,select:focus,textarea:focus{border-color:var(--a1);outline:none}
+textarea{min-height:96px;resize:vertical}
+.full{grid-column:1/-1}
+.note{color:var(--mut);font-size:14px;margin-top:14px}
+/* ===== قناة واتساب ===== */
+.channel{background:var(--grad);color:#111;border-radius:18px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.channel h2{margin:0 0 4px;font-size:clamp(22px,3.4vw,30px)}
+.channel .btn{background:#0D0F12;color:#fff}
+/* ===== التواصل ===== */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.contact .card b{display:block;font-family:Cairo;margin-bottom:4px}
+.contact .card p{margin:0;color:#cfd5de}
+.contact .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btns .btn{padding:9px 16px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--mut);font-size:14px}
+/* ===== زر واتساب العائم ===== */
+.float{position:fixed;inset-inline-start:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.float svg{width:30px;height:30px;fill:#fff}
+</style>
+</head>
+<body>
+
+<!-- الشريط العلوي -->
+<header><div class="wrap nav">
+  <a class="brand" href="#top"><img src="data:image/png;base64,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" alt="شعار توب آرت"> توب آرت</a>
+  <nav><a href="#services">خدماتنا</a><a href="#request">اطلب الآن</a><a href="#contact">تواصل معنا</a></nav>
+  <a class="btn" style="padding:8px 18px;font-size:14px" href="#request">اطلب عرض سعر</a>
+</div></header>
+
+<!-- الواجهة الرئيسية -->
+<section class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap hero-in">
+    <h1>إبداع <span>وليس اتباع</span></h1>
+    <p>توب آرت للديكور والإعلان في صنعاء: واجهات، حروف بارزة، لوحات إعلانية وطباعة بكل الخامات.</p>
+    <div class="row">
+      <a class="btn" href="#request" data-tab="quote">اطلب عرض سعر فوري</a>
+      <a class="btn ghost" href="#request" data-tab="album">اطلب صور أعمال سابقة</a>
+    </div>
+  </div>
+</section>
+
+<!-- الخدمات -->
+<section class="services" id="services"><div class="wrap">
+  <h2>خدماتنا</h2><p class="sub">من الفكرة إلى التركيب، نصمم وننفذ واجهة نشاطك بخامات تتحمل الطقس والزمن.</p>
+  <div class="grid">
+    <div class="card">
+      <svg viewBox="0 0 48 48"><path d="M6 40V14l18-8 18 8v26M6 40h36M14 40V22h20v18M14 28h20"/></svg>
+      <h3>واجهات كلادينج (إكبوند)</h3><p>تصميم وتكسية واجهات المحلات والشركات.</p>
+      <ul><li>أحدث التصاميم</li><li>مقاومة للعوامل الجوية</li></ul>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 48 48"><path d="M10 38V10h14a8 8 0 010 16H10M30 38V10M14 42h26M34 6l6 4"/></svg>
+      <h3>حروف بارزة ومجسمة (3D)</h3><p>حروف مضيئة وعادية بخامات متعددة.</p>
+      <ul><li>أكريليك كوري معالج</li><li>ستانلس ستيل ذهبي وفضي</li><li>زنكور وإضاءات LED نقية</li></ul>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 48 48"><rect x="5" y="6" width="38" height="22" rx="2"/><path d="M24 28v14M16 42h16M12 14h24M12 20h14"/></svg>
+      <h3>اللوحات الإعلانية واليونيبول</h3><p>حضور واضح للعلامة على الطرق وواجهات المباني.</p>
+      <ul><li>لوحات طرق عملاقة (Unipole)</li><li>لوحات جانبية وأمامية</li><li>فليكس فيس عالي الدقة</li></ul>
+    </div>
+    <div class="card">
+      <svg viewBox="0 0 48 48"><path d="M8 8h32v24H8zM14 32v10h20V32M14 38h20M16 14h16M16 20h10"/></svg>
+      <h3>طباعة اللواصق وجميع الخامات</h3><p>طباعة رقمية بدقة عالية.</p>
+      <ul><li>لواصق عاكسة وشفافة وبيضاء</li><li>بنرات وأقمشة دعاية</li><li>استيكرات واجهات</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- طلب الألبوم وعرض السعر -->
+<section id="request"><div class="wrap">
+  <h2>اختر بسهولة، ثم اطلب</h2><p class="sub">عبّئ النموذج وسيصل طلبك منسقاً إلى واتساب المكتب بنقرة واحدة.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-album" aria-selected="true" aria-controls="p-album">طلب ألبوم صور وفيديوهات</button>
+    <button class="tab" role="tab" id="t-quote" aria-selected="false" aria-controls="p-quote">طلب عرض سعر</button>
+  </div>
+
+  <form class="panel" id="p-album" role="tabpanel" data-title="طلب ألبوم أعمال سابقة">
+    <div class="fields">
+      <div><label for="a1">الاسم</label><input id="a1" name="الاسم" required></div>
+      <div><label for="a2">نوع العمل</label>
+        <select id="a2" name="نوع العمل"><option>واجهة إكبوند</option><option>حروف بارزة</option><option>لوحة إعلانية / يونيبول</option><option>طباعة لواصق</option></select></div>
+      <div><label for="a3">نوع نشاطك التجاري</label>
+        <select id="a3" name="النشاط"><option>كافيه</option><option>صيدلية</option><option>متجر</option><option>مطعم</option><option>شركة</option><option>أخرى</option></select></div>
+      <div><label for="a4">المطلوب</label>
+        <select id="a4" name="المطلوب"><option>صور وفيديوهات</option><option>صور فقط</option><option>فيديوهات فقط</option></select></div>
+      <div class="full"><label for="a5">ملاحظات (اختياري)</label><textarea id="a5" name="ملاحظات"></textarea></div>
+    </div>
+    <p class="note">سنرسل لك نماذج حقيقية لأعمال نفذناها سابقاً لتساعدك على القرار.</p><br>
+    <button class="btn" type="submit">أرسل الطلب عبر واتساب</button>
+  </form>
+
+  <form class="panel" id="p-quote" role="tabpanel" data-title="طلب عرض سعر" hidden>
+    <div class="fields">
+      <div><label for="q1">الاسم</label><input id="q1" name="الاسم" required></div>
+      <div><label for="q2">نوع الخدمة</label>
+        <select id="q2" name="الخدمة"><option>واجهات كلادينج (إكبوند)</option><option>حروف بارزة ومجسمة</option><option>لوحات إعلانية / يونيبول</option><option>طباعة لواصق</option></select></div>
+      <div><label for="q3">الأبعاد التقريبية</label><input id="q3" name="الأبعاد" placeholder="مثال: 6 م × 1.5 م"></div>
+      <div><label for="q4">مكان التركيب</label><input id="q4" name="مكان التركيب" placeholder="المدينة / الشارع"></div>
+      <div class="full"><label for="q5">ملاحظات خاصة</label><textarea id="q5" name="ملاحظات"></textarea></div>
+    </div>
+    <br><button class="btn" type="submit">أرسل الطلب عبر واتساب</button>
+  </form>
+</div></section>
+
+<!-- قناة واتساب -->
+<section style="padding-top:0"><div class="wrap">
+  <div class="channel">
+    <div><h2>تابع مشاريعنا وخصوماتنا اليومية</h2><p>اشترك في قناة توب آرت على واتساب.</p></div>
+    <a class="btn" href="https://whatsapp.com/channel/0029VaCeFRVHrDZWwlj9Jm1b" target="_blank" rel="noopener">اشترك في القناة</a>
+  </div>
+</div></section>
+
+<!-- التواصل -->
+<section class="services" id="contact"><div class="wrap">
+  <h2>تواصل معنا</h2><p class="sub">زرنا في المكتب أو راسلنا في أي وقت.</p>
+  <div class="contact">
+    <div class="card"><b>الهاتف / واتساب</b><p dir="ltr" style="text-align:right">+967 773 482 722</p>
+      <div class="btns"><a class="btn" href="tel:+967773482722">اتصال مباشر</a><a class="btn ghost" id="loc" href="#">اطلب اللوكيشن</a></div></div>
+    <div class="card"><b>البريد الإلكتروني</b><p><a href="mailto:fahdos2013@gmail.com">fahdos2013@gmail.com</a></p></div>
+    <div class="card"><b>العنوان</b><p>اليمن - صنعاء - جولة الجامعة الجديدة - بداية شارع العدل - خلف محل ضياءكم لخدمات الكمبيوتر والطابعات.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© توب آرت للديكور والإعلان — إبداع وليس اتباع</div></footer>
+
+<!-- زر واتساب عائم -->
+<a class="float" id="fab" href="#" aria-label="تواصل عبر واتساب">
+  <svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 00-11 19.8L3 29l6.400-1.700A13 13 0 1016 3zm6.900 18.100c-.3.800-1.700 1.500-2.300 1.600-.6.100-1.300.100-2.100-.100a19 19 0 01-6.100-3.800 11 11 0 01-2.700-3.800c-.3-1.700.5-2.500.8-2.900.3-.3.700-.4.900-.4h.6c.2 0 .5-.1.700.5l1 2.400c.1.200.1.400 0 .6l-.4.700c-.2.200-.4.400-.2.800a8 8 0 002.600 2.900c.9.700 1.700 1 2 1.100.3.100.5.100.7-.1l1-1.200c.2-.3.500-.3.700-.2l2.300 1.100c.3.100.5.200.6.400.1.100.1.800-.2 1.500z"/></svg>
+</a>
+
+<script>
+/* رقم واتساب المكتب */
+const PHONE = "967773482722";
+const wa = t => `https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
+
+/* تبديل التبويبات */
+function showTab(name){
+  ["album","quote"].forEach(n=>{
+    document.getElementById("p-"+n).hidden = n!==name;
+    document.getElementById("t-"+n).setAttribute("aria-selected", n===name);
+  });
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showTab(b.id.slice(2)));
+document.querySelectorAll("[data-tab]").forEach(a=>a.addEventListener("click",()=>showTab(a.dataset.tab)));
+
+/* إرسال النماذج إلى واتساب بصيغة منسقة */
+document.querySelectorAll("form").forEach(f=>f.addEventListener("submit",e=>{
+  e.preventDefault();
+  let msg = `*${f.dataset.title}* - توب آرت\n`;
+  f.querySelectorAll("input,select,textarea").forEach(el=>{
+    if(el.value.trim()) msg += `\n• ${el.name}: ${el.value.trim()}`;
+  });
+  window.open(wa(msg),"_blank");
+}));
+
+/* أزرار واتساب: العائم وطلب اللوكيشن */
+document.getElementById("fab").href = wa("السلام عليكم، أريد الاستفسار عن خدماتكم.");
+document.getElementById("loc").href = wa("السلام عليكم، أرجو إرسال لوكيشن مكتب توب آرت.");
+</script>
+</body>
+</html>
