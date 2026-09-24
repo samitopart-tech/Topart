@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="google-site-verification" content="CcCyXTT7u-FY5tWSZIIfrYpxlsGdNUS_Y-NEhcoGZ5o" />
 <title>توب آرت للديكور والإعلان</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&family=Tajawal:wght@400;500;700&display=swap">
 <style>
@@ -205,26 +206,38 @@ const wa = t => `https://wa.me/${PHONE}?text=${encodeURIComponent(t)}`;
 /* تبديل التبويبات */
 function showTab(name){
   ["album","quote"].forEach(n=>{
-    document.getElementById("p-"+n).hidden = n!==name;
-    document.getElementById("t-"+n).setAttribute("aria-selected", n===name);
+    const panel = document.getElementById("p-"+n);
+    const tab = document.getElementById("t-"+n);
+    if(panel) panel.hidden = n!==name;
+    if(tab) tab.setAttribute("aria-selected", n===name);
   });
 }
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>showTab(b.id.slice(2)));
 document.querySelectorAll("[data-tab]").forEach(a=>a.addEventListener("click",()=>showTab(a.dataset.tab)));
 
-/* إرسال النماذج إلى واتساب بصيغة منسقة */
-document.querySelectorAll("form").forEach(f=>f.addEventListener("submit",e=>{
-  e.preventDefault();
-  let msg = `*${f.dataset.title}* - توب آرت\n`;
-  f.querySelectorAll("input,select,textarea").forEach(el=>{
-    if(el.value.trim()) msg += `\n• ${el.name}: ${el.value.trim()}`;
-  });
-  window.open(wa(msg),"_blank");
-}));
+/* إرسال نماذج واتساب */
+document.querySelectorAll("form.panel").forEach(f => {
+  f.onsubmit = e => {
+    e.preventDefault();
+    const data = new FormData(f);
+    let msg = `*${f.dataset.title}*\n------------------\n`;
+    for(const [k, v] of data.entries()){
+      if(v.trim()) msg += `*${k}:* ${v}\n`;
+    }
+    window.open(wa(msg), "_blank");
+  };
+});
 
-/* أزرار واتساب: العائم وطلب اللوكيشن */
-document.getElementById("fab").href = wa("السلام عليكم، أريد الاستفسار عن خدماتكم.");
-document.getElementById("loc").href = wa("السلام عليكم، أرجو إرسال لوكيشن مكتب توب آرت.");
+/* زر اللوكيشن والزر العائم */
+document.getElementById("loc").onclick = e => {
+  e.preventDefault();
+  window.open(wa("السلام عليكم، أود الحصول على موقع المكتب (اللوكيشن)."), "_blank");
+};
+document.getElementById("fab").onclick = e => {
+  e.preventDefault();
+  window.open(wa("السلام عليكم، أود الاستفسار عن خدمات توب آرت للديكور والإعلان."), "_blank");
+};
 </script>
 </body>
 </html>
+
